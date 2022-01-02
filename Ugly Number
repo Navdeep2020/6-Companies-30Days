@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int nthUglyNumber(int n) {
+         int ugly[n];
+        ugly[0] = 1;
+        int count = 1;
+        int p2 = 0, p3 = 0, p5 = 0;
+        while(count < n){
+            int val2 = ugly[p2]*2;
+            int val3 = ugly[p3]*3;
+            int val5 = ugly[p5]*5;
+            int val = min({val2, val3, val5});
+            if(val == val2) p2++;
+            if(val == val3) p3++;
+            if(val == val5) p5++;
+            ugly[count++] = val;
+        }
+        return ugly[n-1];
+    }
+};
