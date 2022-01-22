@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int longestMountain(vector<int>& arr) {
+        int maxMountain=0;
+        
+        int i=1;
+        while(i<arr.size()){
+            while(i<arr.size() && arr[i-1] == arr[i])
+                ++i;
+            
+            int up=0;
+            while(i<arr.size() && arr[i-1] < arr[i]){
+                ++i;
+                up++;
+            }
+            
+            int down=0;
+             while(i<arr.size() && arr[i-1] > arr[i]){
+                 ++i;
+                 down++;
+             }
+            
+            if(up>0 && down >0)
+                maxMountain = max(maxMountain,up+down+1);
+        }
+        return maxMountain;
+
+    }
+};

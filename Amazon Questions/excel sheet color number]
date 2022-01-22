@@ -1,0 +1,11 @@
+class Solution {
+public:
+    int titleToNumber(string columnTitle) {
+        int cnum=0;
+        for(int i=0;i<columnTitle.size();i++){
+            cnum *= 26;
+            cnum += columnTitle[i] - 'A' + 1;
+        }
+        return cnum;
+    }
+};
