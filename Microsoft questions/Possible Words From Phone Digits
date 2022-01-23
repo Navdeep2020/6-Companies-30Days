@@ -1,0 +1,24 @@
+class Solution {
+public:
+    const vector<string> pad = {
+        "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"
+    };
+    
+    vector<string> letterCombinations(string digits) {
+        if(digits.empty()) return {}; //base case
+        vector<string>result;
+        result.push_back("");
+        
+        for(auto it:digits){
+            vector<string> tmp;
+            for(auto candidate: pad[it-'0']){ //eg 2-0=2 
+                for(auto s: result){
+                tmp.push_back(s+candidate); //suppose Ip= 23 so fro 3 a+d,a+e,a+f again b+d..
+                }
+            }
+            result.swap(tmp); //making result = temp
+        }
+        return result;
+        
+    }
+}

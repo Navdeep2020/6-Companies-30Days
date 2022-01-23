@@ -1,0 +1,23 @@
+int recur(Node* root, int x, int &cnt){
+    if(!root)
+      return 0;
+
+
+     int l = recur(root->left,x,cnt);
+     int r = recur(root->right,x,cnt);
+
+     int sum = root->data + l + r;
+
+      if(sum == x)
+         cnt++;
+
+      return sum;
+
+}
+int countSubtreesWithSumX(Node* root, int X)
+{
+	int cnt = 0;
+	int x = recur(root,X,cnt);
+
+	return cnt;
+}

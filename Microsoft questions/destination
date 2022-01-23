@@ -1,0 +1,10 @@
+ int minSteps(int D){
+        int cnt = 0,sum = 0;
+
+        while((sum < D) || ((sum-D) % 2 == 1)){
+            sum += cnt;
+            cnt++;
+        }
+
+       return cnt - 1;
+    }

@@ -1,0 +1,17 @@
+void dfs(vector<int> adj[], int i, int c, int d, vector<int>& visit)
+    {
+        visit[i] = 1;
+        for(auto it: adj[i])
+        {
+            if(i==c && it == d ) 
+                continue;
+            if(!visit[it]) 
+                dfs(adj,it,c,d,visit);
+        }
+    }
+    int isBridge(int V, vector<int> adj[], int c, int d) 
+    {
+        vector<int> visit(V,0);
+        dfs(adj,c,c,d,visit);
+        return (!visit[d]);
+    }
