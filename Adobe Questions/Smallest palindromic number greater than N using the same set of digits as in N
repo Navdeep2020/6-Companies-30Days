@@ -1,0 +1,15 @@
+ string nextPalin(string N) { 
+        int sz = N.size();
+        string ans = N.substr(0,sz/2);
+
+        if(next_permutation(ans.begin(),ans.end())){
+            string oth = ans;
+            if(sz & 1)
+              ans += N[sz/2];
+
+            reverse(oth.begin(),oth.end());
+            ans += oth;
+            return ans;
+        }
+       return "-1"; 
+    }

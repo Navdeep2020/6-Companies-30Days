@@ -1,0 +1,25 @@
+int atoi(string str) {
+        vector<long long> power(11);
+        power[0] = 1;
+        for(int i=1;i<11;i++){
+            power[i] = power[i-1] * 10;
+        }
+        long long x = str.size()-1;
+        int ans = 0,idx = 0;
+        if(str[0] == '-'){
+            x--;
+            idx = 1;
+        }
+        for(int i=idx;i<str.size();i++){
+            if(str[i] >= '0' && str[i] <= '9'){
+                ans += (str[i] - '0')*power[x];
+                x--;
+            }
+            else
+            return -1;
+        }
+
+        if(str[0] == '-')
+          ans = -ans;
+        return ans;
+    }

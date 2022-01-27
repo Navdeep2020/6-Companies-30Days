@@ -1,0 +1,14 @@
+int recur(int i,int j,vector<int>&A,vector<vector<int>>&dp){
+        if(i>j)
+            return 0;
+        if(dp[i][j]!=-1)
+            return dp[i][j];
+        return dp[i][j]=max(A[i]+min(recur(i+1,j-1,A,dp),recur(i+2,j,A,dp)),
+                        A[j]+min(recur(i+1,j-1,A,dp),recur(i,j-2,A,dp)));
+    }
+
+    int maxCoins(vector<int>&A,int n)
+    {
+	    vector<vector<int>>dp(n,vector<int>(n,-1));
+	    return recur(0,n-1,A,dp);
+    }
